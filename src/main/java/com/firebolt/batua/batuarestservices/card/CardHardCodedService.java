@@ -43,4 +43,16 @@ public class CardHardCodedService {
 		}
 		return null;
 	}
+	
+	public Card save(Card card) {
+		if(card.getId() == -1 || card.getId() == 0) {
+			card.setId(++idCounter);
+			cards.add(card);
+		}
+		else {
+			deleteById(card.getId());
+			cards.add(card);
+		}
+		return card;
+	}
 }
